@@ -1,0 +1,57 @@
+{
+    "name": "alhoqbani/laravel-mpdf",
+    "description": "Laravel wrapper for mPDF 7.0",
+    "keywords": [
+        "alhoqbani",
+        "laravel-mPDF"
+    ],
+    "homepage": "https://github.com/alhoqbani/laravel-mPDF",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hamoud Alhoqbani",
+            "email": "h.alhobqbani@gmail.com",
+            "homepage": "https://github.com/alhoqbani",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "alhoqbani/laravel-mpdf": "@dev",
+        "illuminate/console": "^5.5",
+        "illuminate/filesystem": "^5.5",
+        "illuminate/support": "^5.5",
+        "mpdf/mpdf": "^7.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "orchestra/testbench": "^3.5",
+        "phpunit/phpunit": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alhoqbani\\Mpdf\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alhoqbani\\Mpdf\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alhoqbani\\Mpdf\\PDFServiceProvider"
+            ],
+            "aliases": {
+                "PDF": "Alhoqbani\\Mpdf\\pdfFacade"
+            }
+        }
+    }
+}
