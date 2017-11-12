@@ -1,10 +1,11 @@
 <?php
 
-namespace Alhoqbani\Mpdf;
+namespace Alhoqbani\PDF;
 
+use \Alhoqbani\PDF\Contracts\PDF as PDFContract;
 use Mpdf\Mpdf;
 
-class PDF
+class PDF implements PDFContract
 {
 
     /**
@@ -22,17 +23,6 @@ class PDF
         $this->mpdf = $mpdf;
     }
 
-    /**
-     * Friendly welcome.
-     *
-     * @param string $phrase Phrase to return
-     * @return string Returns the phrase passed in
-     */
-    public function echoPhrase($phrase)
-    {
-        return $phrase;
-    }
-
 //    public function WriteHTML($html)
 //    {
 //        $this->mpdf->writeHTML($html);
@@ -41,7 +31,8 @@ class PDF
     public function __call($name, $arguments)
     {
         $this->mpdf->$name(...$arguments);
-       return $this;
+
+        return $this;
     }
-    
+
 }

@@ -5,7 +5,7 @@ namespace Alhoqbani\Mpdf;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Alhoqbani\Mpdf\PDF
+ * @see \Alhoqbani\PDF\PDF
  */
 class PDFFacade extends Facade
 {

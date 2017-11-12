@@ -1,6 +1,6 @@
 <?php
 
-namespace Alhoqbani\Mpdf\Test;
+namespace Alhoqbani\PDF\Test;
 
 use PHPUnit\Framework\TestCase;
 

@@ -2,7 +2,7 @@
 
 namespace Alhoqbani\Mpdf\Test;
 
-use Alhoqbani\Mpdf\PDF;
+use Alhoqbani\PDF\PDF;
 use Mockery;
 use Mpdf\Mpdf;
 

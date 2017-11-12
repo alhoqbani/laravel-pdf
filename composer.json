@@ -18,6 +18,7 @@
     "require": {
         "php": "^7.0",
         "alhoqbani/laravel-mpdf": "@dev",
+        "illuminate/config": "^5.5",
         "illuminate/console": "^5.5",
         "illuminate/filesystem": "^5.5",
         "illuminate/support": "^5.5",
@@ -30,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Alhoqbani\\Mpdf\\": "src"
+            "Alhoqbani\\PDF\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Alhoqbani\\Mpdf\\Test\\": "tests"
+            "Alhoqbani\\PDF\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -47,10 +48,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Alhoqbani\\Mpdf\\PDFServiceProvider"
+                "Alhoqbani\\PDF\\PDFServiceProvider"
             ],
             "aliases": {
-                "PDF": "Alhoqbani\\Mpdf\\pdfFacade"
+                "PDF": "Alhoqbani\\PDF\\PDFFacade"
             }
         }
     }
