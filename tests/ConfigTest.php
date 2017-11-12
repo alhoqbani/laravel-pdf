@@ -5,8 +5,9 @@ namespace Alhoqbani\PDF\Test;
 use Alhoqbani\PDF\Config;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
+use Orchestra\Testbench\TestCase;
 
-class ConfigTest extends AbstractTestCase
+class ConfigTest extends TestCase
 {
 
     /** @test */
