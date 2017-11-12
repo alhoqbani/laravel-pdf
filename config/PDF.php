@@ -46,7 +46,7 @@ return [
 
     // List of Directories Containing fonts (use absolute path)
     'fontDir'           => [
-        'pdf/fonts', // Relevant to the local driver root path
+        storage_path('pdf/fonts'), // absolute path
         // add extra directory here
     ],
     // Fonts Configurations

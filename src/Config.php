@@ -6,19 +6,20 @@ use Alhoqbani\PDF\Contracts\Config as ConfigContract;
 use Illuminate\Config\Repository;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
-use Mpdf\Mpdf;
 
 class Config extends Repository implements ConfigContract
 {
 
     /**
      * Default Mpdf Configurations
+     *
      * @var array
      */
     protected $defaultsConfig;
 
     /**
      * Default Mpdf Font Configurations
+     *
      * @var array
      */
     protected $defaultsFontConfig;
@@ -31,22 +32,9 @@ class Config extends Repository implements ConfigContract
      */
     public function __construct(array $items = [])
     {
-        parent::__construct($items);
-
         $this->defaultsConfig = (new ConfigVariables())->getDefaults();
         $this->defaultsFontConfig = (new FontVariables())->getDefaults();
-
-        if ($this->has('fontDir')) {
-            $defaultFontDirs = $this->defaultsConfig['fontDir'];
-//            $fontDirs = $config['fontDir'];
-//            $config['fontDir'] = array_merge($defaultFontDirs, $fontDirs);
-        }
-
-        if ($this->has('fontdata')) {
-            $defaultFontdata = $this->defaultsFontConfig['fontdata'];
-//            $fontdata = $config['fontdata'];
-//            $config['fontdata'] = array_merge($defaultFontdata, $fontdata);
-        }
+        parent::__construct($items);
     }
 
     /**
@@ -67,5 +55,25 @@ class Config extends Repository implements ConfigContract
     public function getDefaultFontMpdfConfig()
     {
         return $this->defaultsFontConfig;
+    }
+
+
+    /**
+     * Get all of the configuration items after merging with default Mpdf config.
+     *
+     * @return array
+     */
+    public function all()
+    {
+        $items = $this->items;
+        if ($this->has('fontDir')) {
+            $items['fontDir'] = array_merge($this->get('fontDir'), $this->defaultsConfig['fontDir']);
+        }
+
+        if ($this->has('fontdata')) {
+            $items['fontdata'] = array_merge($this->get('fontdata'), $this->defaultsFontConfig['fontdata']);
+        }
+
+        return $items;
     }
 }
