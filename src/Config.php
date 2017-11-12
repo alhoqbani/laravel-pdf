@@ -11,73 +11,61 @@ use Mpdf\Mpdf;
 class Config extends Repository implements ConfigContract
 {
 
+    /**
+     * Default Mpdf Configurations
+     * @var array
+     */
+    protected $defaultsConfig;
+
+    /**
+     * Default Mpdf Font Configurations
+     * @var array
+     */
+    protected $defaultsFontConfig;
+
+    /**
+     * Create a new configuration repository.
+     *
+     * @param  array $items
+     *
+     */
     public function __construct(array $items = [])
     {
         parent::__construct($items);
 
-        $config = $this->app->get('config')->get('PDF');
-        $defaultConfig = (new ConfigVariables())->getDefaults();
-        $defaultFontConfig = (new FontVariables())->getDefaults();
+        $this->defaultsConfig = (new ConfigVariables())->getDefaults();
+        $this->defaultsFontConfig = (new FontVariables())->getDefaults();
 
-        $config = $this->setTempDirectory($config);
-
-        if (isset($config['fontDir'])) {
-            $defaultFontDirs = $defaultConfig['fontDir'];
-            $fontDirs = $config['fontDir'];
-            $config['fontDir'] = array_merge($defaultFontDirs, $fontDirs);
+        if ($this->has('fontDir')) {
+            $defaultFontDirs = $this->defaultsConfig['fontDir'];
+//            $fontDirs = $config['fontDir'];
+//            $config['fontDir'] = array_merge($defaultFontDirs, $fontDirs);
         }
 
-        if (isset($config['fontdata'])) {
-            $defaultFontdata = $defaultFontConfig['fontdata'];
-            $fontdata = $config['fontdata'];
-            $config['fontdata'] = array_merge($defaultFontdata, $fontdata);
+        if ($this->has('fontdata')) {
+            $defaultFontdata = $this->defaultsFontConfig['fontdata'];
+//            $fontdata = $config['fontdata'];
+//            $config['fontdata'] = array_merge($defaultFontdata, $fontdata);
         }
-
-        $config = array_merge($defaultConfig, $config);
-    }
-
-
-    /**
-     * Set the temporary directory if present in config
-     *
-     * @param $config
-     *
-     * @return mixed
-     */
-    protected function setTempDirectory($config)
-    {
-        if ($tempDir = $this->app->config->get('PDF.tempDir')) {
-            if ( ! $this->app->get('filesystem')->disk('local')->exists($tempDir)) {
-                $this->app->get('filesystem')->disk('local')->makeDirectory($tempDir, 775);
-            }
-            $config['tempDir'] = $this->app->get('filesystem')->disk('local')->path($tempDir);
-        }
-
-        return $config;
     }
 
     /**
-     * Set the logger for Mpdf class
+     * Get Mpdf Default Config
      *
-     * @param \Mpdf\Mpdf $mpdf
+     * @return array
      */
-    protected function setLogger(Mpdf $mpdf)
+    public function getDefaultMpdfConfig()
     {
-        if ($logging = $this->app->config->get('PDF.logging')) {
-            switch ($logging) {
-                case 'default':
-                    $mpdf->setLogger($this->app->log->getMonolog());
+        return $this->defaultsConfig;
+    }
 
-                    return;
-                case 'custom':
-                    $logger = new Logger('name');
-                    $logger->pushHandler(new StreamHandler(storage_path('logs/pdf.log'), Logger::DEBUG));
-                    $mpdf->setLogger($logger);
-
-                    return;
-                default:
-                    return;
-            }
-        }
+    /**
+     * Get Mpdf Default Fonts Config
+     *
+     * @return array
+     */
+    public function getDefaultFontMpdfConfig()
+    {
+        return $this->defaultsFontConfig;
     }
 }
