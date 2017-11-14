@@ -1,11 +1,14 @@
 {
-    "name": "alhoqbani/laravel-mpdf",
+    "name": "alhoqbani/laravel-pdf",
     "description": "Laravel wrapper for mPDF 7.0",
     "keywords": [
-        "alhoqbani",
-        "laravel-mPDF"
+        "laravel-mPDF",
+        "laravel-pdf",
+        "pdf",
+        "mpdf",
+        "laravel"
     ],
-    "homepage": "https://github.com/alhoqbani/laravel-mPDF",
+    "homepage": "https://github.com/alhoqbani/laravel-pdf",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +20,6 @@
     ],
     "require": {
         "php": "^7.0",
-        "alhoqbani/laravel-mpdf": "@dev",
         "illuminate/config": "^5.5",
         "illuminate/console": "^5.5",
         "illuminate/filesystem": "^5.5",
