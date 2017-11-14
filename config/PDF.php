@@ -31,7 +31,7 @@ return [
      * @see https://mpdf.github.io/installation-setup/folders-for-temporary-files.html
      * Comment the following line to keep the temporary directory
      */
-    'tempDir'           => 'pdf/tmp', // Relevant to the local driver root path
+    'tempDir'           => storage_path('app/pdf/tmp'), // absolute path
 
 
     /**
@@ -46,12 +46,12 @@ return [
 
     // List of Directories Containing fonts (use absolute path)
     'fontDir'           => [
-        storage_path('pdf/fonts'), // absolute path
+        storage_path('app/pdf/fonts'), // absolute path
         // add extra directory here
     ],
     // Fonts Configurations
     'fontdata'          => [
-        // lower-case and contain no spaces
+        // font name should be lower-case and contain no spaces
         'customfontname' => [
             'R'          => 'RegularCustomFont.ttf',
             'B'          => 'BoldCustomFont.ttd',

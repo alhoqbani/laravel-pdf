@@ -27,7 +27,7 @@ class PDFServiceProviderTest extends TestCase
     {
         $mpdf = $this->app->make(Mpdf::class);
 
-        $this->assertEquals(storage_path('app/' . \Config::get('PDF.tempDir')), $mpdf->tempDir);
+        $this->assertDirectoryExists($mpdf->tempDir);
     }
 
     protected function getPackageProviders($app)

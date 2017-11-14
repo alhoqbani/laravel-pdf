@@ -3,6 +3,7 @@
 namespace Alhoqbani\PDF;
 
 use Alhoqbani\PDF\Contracts\PDF as PDFContract;
+use Alhoqbani\PDF\Exceptions\PDFException;
 use Illuminate\Support\ServiceProvider;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
@@ -38,7 +39,7 @@ class PDFServiceProvider extends ServiceProvider
                 $config = new Config($this->app->get('config')->get('PDF'));
 
                 if ($config->has('tempDir')) {
-                    $this->setTempDirectory($config);
+                    $this->setTempDirectory($config->get('tempDir'));
                 }
 
                 $mpdf = new Mpdf($config->all());
@@ -86,15 +87,23 @@ class PDFServiceProvider extends ServiceProvider
     /**
      * Set the temporary directory if present in config
      *
-     * @param \Alhoqbani\PDF\Config $config
+     *
+     * @param $tempDir
      *
      * @return void
+     * @throws \Alhoqbani\PDF\Exceptions\PDFException
      */
-    protected function setTempDirectory(Config $config)
+    protected function setTempDirectory($tempDir)
     {
-        if ( ! $this->app->get('filesystem')->disk('local')->exists($tempDir = $config->get('tempDir'))) {
-            $this->app->get('filesystem')->disk('local')->makeDirectory($tempDir, 775);
+        if ( ! is_dir($tempDir) || ! is_writable($tempDir)) {
+            if ( ! @mkdir($tempDir, 0775, true)) {
+                $message = sprintf(
+                    'Couldn\'t create temprory directory at %s.
+                    Create the directory with permission 0775',
+                    $tempDir
+                );
+                throw new PDFException($message);
+            }
         }
-        $config->set('tempDir', $this->app->get('filesystem')->disk('local')->path($tempDir));
     }
 }
