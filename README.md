@@ -1,19 +1,21 @@
 # Laravel wrapper for mPDF 7.0
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/alhoqbani/laravel-mpdf.svg?style=flat-square)](https://packagist.org/packages/alhoqbani/laravel-mpdf)
-[![Build Status](https://img.shields.io/travis/alhoqbani/laravel-mpdf/master.svg?style=flat-square)](https://travis-ci.org/alhoqbani/laravel-mpdf)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/alhoqbani/laravel-pdf.svg?style=flat-square)](https://packagist.org/packages/alhoqbani/laravel-pdf)
+[![Build Status](https://img.shields.io/travis/alhoqbani/laravel-pdf/master.svg?style=flat-square)](https://travis-ci.org/alhoqbani/laravel-pdf)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/xxxxxxxxx.svg?style=flat-square)](https://insight.sensiolabs.com/projects/xxxxxxxxx)
-[![Quality Score](https://img.shields.io/scrutinizer/g/alhoqbani/laravel-mpdf.svg?style=flat-square)](https://scrutinizer-ci.com/g/alhoqbani/laravel-mpdf)
-[![Total Downloads](https://img.shields.io/packagist/dt/alhoqbani/laravel-mpdf.svg?style=flat-square)](https://packagist.org/packages/alhoqbani/laravel-mpdf)
+[![Quality Score](https://img.shields.io/scrutinizer/g/alhoqbani/laravel-pdf.svg?style=flat-square)](https://scrutinizer-ci.com/g/alhoqbani/laravel-pdf)
+[![Total Downloads](https://img.shields.io/packagist/dt/alhoqbani/laravel-pdf.svg?style=flat-square)](https://packagist.org/packages/alhoqbani/laravel-pdf)
 
 Laravel wrapper for mPDF 7.0
+
+> # UNDER DEVELOPMENT. Don't use for production
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require 'alhoqbani/laravel-mpdf:@dev'
+composer require 'alhoqbani/laravel-pdf:@dev'
 ```
 
 ## Usage
