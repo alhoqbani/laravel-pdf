@@ -20,8 +20,6 @@ composer require 'alhoqbani/laravel-pdf:@dev'
 
 ## Usage
 
-``` php
-
 Start by publishing the config file:
 
 
@@ -45,7 +43,6 @@ To us the Mpdf library directly, you can get a pre-configured instance of `Mpdf`
 ```
 // TODO
 
-```
 
 ### Testing
 
