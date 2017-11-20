@@ -22,4 +22,13 @@ class PDFTest extends Mockery\Adapter\Phpunit\MockeryTestCase
         $PDF = new PDF($mpdf);
         $PDF->WriteHTML('<h1>Hello World</h1>');
     }
+    
+    /** @test */
+    public function it_returns_mpdf_instance()
+    {
+        $mpdf = Mockery::mock(Mpdf::class);
+        $PDF = new PDF($mpdf);
+
+        $this->assertInstanceOf(Mpdf::class, $PDF->getMpdf());
+    }
 }

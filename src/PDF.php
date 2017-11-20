@@ -35,4 +35,9 @@ class PDF implements PDFContract
         return $this;
     }
 
+    public function getMpdf()
+    {
+        return $this->mpdf;
+    }
+
 }
