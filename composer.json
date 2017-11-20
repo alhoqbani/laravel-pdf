@@ -53,7 +53,7 @@
                 "Alhoqbani\\PDF\\PDFServiceProvider"
             ],
             "aliases": {
-                "PDF": "Alhoqbani\\PDF\\PDFFacade"
+                "PDF": "Alhoqbani\\PDF\\Facades\\PDF"
             }
         }
     }

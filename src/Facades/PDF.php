@@ -1,13 +1,13 @@
 <?php
 
-namespace Alhoqbani\Mpdf;
+namespace Alhoqbani\PDF\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Alhoqbani\PDF\PDF
  */
-class PDFFacade extends Facade
+class PDF extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class PDFFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'PDF';
+        return \Alhoqbani\PDF\Contracts\PDF::class;
     }
 }
