@@ -16,7 +16,6 @@ You can install the package via composer:
 
 ```bash
 composer require 'alhoqbani/laravel-pdf:@dev'
-composer require 'alhoqbani/laravel-pdf:@dev'
 ```
 
 ## Usage
@@ -24,6 +23,8 @@ composer require 'alhoqbani/laravel-pdf:@dev'
 ``` php
 
 Start by publishing the config file:
+
+
 ```bash
 php artisan vendor:publish --provider "Alhoqbani\PDF\PDFServiceProvider"
 ```
