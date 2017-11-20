@@ -8,7 +8,7 @@
 
 Laravel wrapper for mPDF 7.0
 
-> # UNDER DEVELOPMENT. Don't use for production
+> # UNDER DEVELOPMENT. Do NOT use for production
 
 ## Installation
 
@@ -16,12 +16,32 @@ You can install the package via composer:
 
 ```bash
 composer require 'alhoqbani/laravel-pdf:@dev'
+composer require 'alhoqbani/laravel-pdf:@dev'
 ```
 
 ## Usage
 
 ``` php
 
+Start by publishing the config file:
+```bash
+php artisan vendor:publish --provider "Alhoqbani\PDF\PDFServiceProvider"
+```
+
+Edit the config file. You can add any extra configuration to be passed to the `Mpdf` constructor.
+
+To us the Mpdf library directly, you can get a pre-configured instance of `Mpdf`
+
+```php
+<?php
+
+        $mpdf = \PDF::getMpdf();
+
+        $mpdf->writeHTML('<h1>Hello World</h1>');
+
+        return $mpdf->output();
+
+```
 // TODO
 
 ```
